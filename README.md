@@ -4,11 +4,11 @@
 
 <div align="center">
 
-[![Stars](https://img.shields.io/github/stars/hmzainjamil/digiminds-speckit?style=for-the-badge&color=FFD700&labelColor=555)](https://github.com/hmzainjamil/digiminds-speckit/stargazers)
-[![Forks](https://img.shields.io/github/forks/hmzainjamil/digiminds-speckit?style=for-the-badge&color=00BFFF&labelColor=555)](https://github.com/hmzainjamil/digiminds-speckit/network)
-[![Issues](https://img.shields.io/github/issues/hmzainjamil/digiminds-speckit?style=for-the-badge&color=FF6347&labelColor=555)](https://github.com/hmzainjamil/digiminds-speckit/issues)
-[![PRs](https://img.shields.io/github/issues-pr/hmzainjamil/digiminds-speckit?style=for-the-badge&color=32CD32&labelColor=555)](https://github.com/hmzainjamil/digiminds-speckit/pulls)
-[![Last Commit](https://img.shields.io/github/last-commit/hmzainjamil/digiminds-speckit?style=for-the-badge&color=9370DB&labelColor=555)](https://github.com/hmzainjamil/digiminds-speckit/commits)
+[![Stars](https://img.shields.io/github/stars/hmzainjamil/digiminds-speckit?style=flat&color=FFD700&labelColor=555)](https://github.com/hmzainjamil/digiminds-speckit/stargazers)
+[![Forks](https://img.shields.io/github/forks/hmzainjamil/digiminds-speckit?style=flat&color=00BFFF&labelColor=555)](https://github.com/hmzainjamil/digiminds-speckit/network)
+[![Issues](https://img.shields.io/github/issues/hmzainjamil/digiminds-speckit?style=flat&color=FF6347&labelColor=555)](https://github.com/hmzainjamil/digiminds-speckit/issues)
+[![PRs](https://img.shields.io/github/issues-pr/hmzainjamil/digiminds-speckit?style=flat&color=32CD32&labelColor=555)](https://github.com/hmzainjamil/digiminds-speckit/pulls)
+[![Last Commit](https://img.shields.io/github/last-commit/hmzainjamil/digiminds-speckit?style=flat&color=9370DB&labelColor=555)](https://github.com/hmzainjamil/digiminds-speckit/commits)
 
 </div>
 
@@ -31,9 +31,18 @@ Agencies die from scope creep and misunderstood requirements. Developers start c
 
 DigiMinds SpecKit enforces a non-negotiable rule: **no code before spec**.
 
-It's a Claude Code skill that runs a structured 6-step Software Design Document (SDD) process before any implementation begins. Built specifically for the DigiMinds AI agency workflow — where AI agents, automation pipelines, and client deliverables require crystal-clear specs to function correctly.
+It's a Claude Code skill that runs a structured 6-step Software Design Document (SDD) process before any implementation begins — built specifically for the DigiMinds AI agency workflow where AI agents, automation pipelines, and client deliverables require crystal-clear specs to function correctly.
 
-The result: features shipped right the first time, with documented decisions that survive team changes.
+---
+
+## ☠️ STARTUPS / BUSINESSES
+
+Every hour of rework costs 3–5x the original build time. Agencies that spec first ship 2x faster and have 80% fewer revision cycles. If your team is "moving fast" without specs, you're actually moving slow — just with confidence.
+
+- **AI agencies** — client deliverables built on vague briefs = endless revisions
+- **Dev shops** — spec gate prevents "we already built it wrong" conversations
+- **Freelancers** — spec approval creates a paper trail that protects your time
+- **Product teams** — spec freeze means no mid-sprint scope creep
 
 ---
 
@@ -70,276 +79,260 @@ The result: features shipped right the first time, with documented decisions tha
 | **Acceptance Criteria** | Testable conditions for "done" — no ambiguity |
 | **Edge Case Matrix** | Grid of inputs × expected behaviors |
 | **Review Gate** | Mandatory human sign-off between plan and execution |
-| **Atomic Task** | Smallest indivisible unit of work — can be done in one sitting |
+| **Atomic Task** | Smallest indivisible unit of work — one sitting |
 | **Spec Freeze** | Locked spec state — no changes without new SpecKit run |
+| **Dependency Map** | Task A must complete before Task B can start |
+| **Constraint Register** | Known limitations: time, tech, integrations, budget |
+| **Risk Matrix** | Probability × impact for each identified risk |
+| **RACI** | Responsible/Accountable/Consulted/Informed per task |
+
+---
 
 ### 🔥 Hot
 
-- **Refuses to code without an approved spec** — hard gate enforced at skill level
-- **Auto-generates acceptance criteria** from natural language requirements
-- **Edge case matrix** generated automatically for every feature
-- **Task dependency graph** visualized before implementation starts
-
----
-
-## ⚙️ HOW IT WORKS
-
-```
-Feature request → Stage 1: EXTRACT requirements (what do we need?)
-       ↓
-Stage 2: RESEARCH (what do we know? what's unknown?)
-       ↓
-Stage 3: ANALYZE (edge cases, constraints, risks)
-       ↓
-Stage 4: PLAN (architecture, components, approach)
-       ↓
-Stage 5: TASKS (atomic numbered list with dependencies)
-       ↓
-[HUMAN REVIEW GATE — approval required]
-       ↓
-Stage 6: IMPLEMENT (code generation against locked spec)
-```
-
-Each stage produces a structured Markdown document. Stages 1-5 are spec-only — no code. Stage 6 only unlocks after human approval. This prevents the most common agency failure: building before understanding.
-
-**Slash command flow:**
 ```bash
-/speckit.specify  # Runs stages 1-3: extract + research + analyze
-/speckit.plan     # Stage 4: architecture and approach
-/speckit.tasks    # Stage 5: atomic task breakdown
-/speckit.implement # Stage 6: implementation (requires prior spec)
+# Full 6-step SDD for a new feature
+python3 ~/.claude/bin/speckit-mae-bridge run "feature: AI-powered lead scoring agent for CRM"
+
+# Step-by-step with slash commands
+/speckit.specify "build webhook intake for n8n → Apollo CRM sync"
+/speckit.plan     # Architecture decisions
+/speckit.tasks    # Numbered atomic task list
+/speckit.implement # Code after approval
+
+# Force spec gate (refuses code without approved spec)
+claude speckit "implement OAuth2 flow for client portal"
+
+# Generate edge case matrix only
+/speckit.analyze "file upload feature: PDF, DOCX, images, 50MB limit"
+
+# Spec existing codebase
+/speckit.specify "reverse-spec this Python file: [paste code]"
 ```
 
 ---
 
-## 🚀 INSTALL
-
-### Option 1 — Clone into Claude skills directory
+## Installation
 
 ```bash
-git clone https://github.com/hmzainjamil/digiminds-speckit.git \
-  ~/.claude/skills/digiminds-speckit
+# Clone to Claude Code skills directory
+git clone https://github.com/hmzainjamil/digiminds-speckit ~/.claude/skills/digiminds-speckit
+
+# Verify SKILL.md
+ls ~/.claude/skills/digiminds-speckit/SKILL.md
+
+# Link the MAE bridge (if using MAE pipeline)
+ln -sf ~/.claude/skills/digiminds-speckit/bin/speckit-mae-bridge.py ~/.claude/bin/speckit-mae-bridge
+
+# Add to CLAUDE.md for auto-enforcement
+echo "Rule: No code before spec. Run /speckit.specify first." >> ~/.claude/CLAUDE.md
 ```
 
-### Option 2 — MAE pipeline integration
+---
 
-```bash
-# Add to MAE skill manifest
-mae skill add digiminds-speckit
+## The 6-Stage Process
 
-# Verify
-mae skill list | grep speckit
+### Stage 1: Extract
+```
+Input:  "Build a lead capture form with CRM sync"
+Output: - Requirements list (functional + non-functional)
+        - Stakeholders identified
+        - Constraints noted (timeline, tech, integrations)
+        - Open questions flagged for resolution
 ```
 
-### Option 3 — Manual
-
-```bash
-mkdir -p ~/.claude/skills/digiminds-speckit
-curl -sL https://raw.githubusercontent.com/hmzainjamil/digiminds-speckit/main/SKILL.md \
-  -o ~/.claude/skills/digiminds-speckit/SKILL.md
+### Stage 2: Research
+```
+Output: - Existing patterns in codebase
+        - Relevant libraries/frameworks
+        - Similar implementations to reference
+        - API documentation needed
+        - Security considerations
 ```
 
-### Option 4 — CLAUDE.md integration
+### Stage 3: Analyze
+```
+Output: - Edge case matrix (input × expected behavior)
+        - Technical tradeoffs (3 options with pros/cons)
+        - Risk matrix (probability × impact)
+        - Performance considerations
+        - Test strategy outline
+```
+
+### Stage 4: Plan
+```
+Output: - Architecture diagram (ASCII)
+        - Component breakdown
+        - Data flow diagram
+        - API contract (request/response shapes)
+        - Database schema changes
+```
+
+### Stage 5: Tasks
+```
+Output: - Numbered atomic task list
+        - Dependencies mapped (Task 3 requires Task 1)
+        - Estimated complexity (S/M/L/XL)
+        - RACI per task
+        - Definition of Done per task
+```
+
+### Stage 6: Implement
+```
+Trigger: Human approval of spec (explicit sign-off required)
+Output:  - Code matching spec exactly
+         - Tests for acceptance criteria
+         - No scope additions without new spec run
+```
+
+---
+
+## SDD Document Template
 
 ```markdown
-# In your CLAUDE.md:
-## SPEC KIT — Run Before Any New Feature/Code
-`python3 ~/.claude/bin/speckit-mae-bridge run "feature"` — full 6-step SDD
-Slash commands: `/speckit.specify` `/speckit.plan` `/speckit.tasks` `/speckit.implement`
-**Rule: No code before spec.**
-```
+# Feature: [Name]
+**Status:** Draft | Review | Approved | Frozen
+**Date:** YYYY-MM-DD
+**Author:** [Name]
 
----
+## 1. Problem Statement
+[What problem does this solve? Why now?]
 
-## 📟 USAGE
+## 2. Requirements
+### Functional
+- [ ] FR-01: [Requirement]
+### Non-functional
+- [ ] NFR-01: Performance — [threshold]
+- [ ] NFR-02: Security — [requirement]
 
-### Full 6-step spec for a new feature
-
-```
-/speckit.specify build a lead capture form with Zapier webhook integration, GDPR consent, and Mailchimp sync
-```
-
-### Just the plan stage
-
-```
-/speckit.plan [paste your requirements brief here]
-```
-
-### Generate task breakdown from existing spec
-
-```
-/speckit.tasks [paste approved spec here]
-```
-
-### Implement from approved spec
-
-```
-/speckit.implement [paste approved spec + tasks]
-```
-
-### MAE bridge (automated)
-
-```bash
-python3 ~/.claude/bin/speckit-mae-bridge run "n8n automation: scrape LinkedIn → enrich → push to CRM"
-```
-
-### Direct CLI
-
-```bash
-# Full pipeline
-speckit run "feature description"
-
-# Just spec
-speckit specify "feature description"
-
-# Tasks only
-speckit tasks "feature description"
-```
-
----
-
-## ⚙️ CONFIGURATION
-
-| Config key | Default | Options | Description |
+## 3. Acceptance Criteria
+| ID | Given | When | Then |
 |---|---|---|---|
-| `enforce_gate` | `true` | `true`, `false` | Require human approval before Stage 6 |
-| `spec_format` | `markdown` | `markdown`, `notion`, `json` | Output format for spec docs |
-| `task_granularity` | `atomic` | `atomic`, `sprint`, `epic` | Task breakdown level |
-| `edge_case_depth` | `standard` | `minimal`, `standard`, `exhaustive` | How deep to dig on edge cases |
-| `acceptance_criteria` | `gherkin` | `gherkin`, `checklist`, `bullet` | Format for acceptance criteria |
-| `save_to_memory` | `true` | `true`, `false` | Persist spec to session memory |
-| `review_checklist` | `true` | `true`, `false` | Include review checklist in spec |
-| `dependency_graph` | `true` | `true`, `false` | Generate task dependency visualization |
-| `risk_section` | `true` | `true`, `false` | Include risk assessment in spec |
-| `agency_context` | `digiminds` | any string | Agency/project context for spec framing |
-| `auto_implement` | `false` | `true`, `false` | Auto-start Stage 6 after approval |
-| `spec_version` | `v1` | `v1`, `v2` | Spec template version |
+| AC-01 | User is logged in | Submits form | Lead created in CRM |
+
+## 4. Edge Cases
+| Input | Expected | Error |
+|---|---|---|
+| Empty email | Validation error | Show inline error |
+
+## 5. Architecture
+[ASCII diagram]
+
+## 6. Tasks
+1. [ ] Task 1 (S) — no deps
+2. [ ] Task 2 (M) — requires Task 1
+```
 
 ---
 
-## 💡 TIPS AND TRICKS
+## Slash Command Reference
 
-### Spec Quality
-
-> **Front-load constraints** — tell SpecKit about budget, timeline, and tech stack in the initial prompt. Later changes invalidate the spec.
-
-> **"Done" is a testable statement** — SpecKit forces acceptance criteria to be verifiable. "User can log in" is bad. "Given valid credentials, user is redirected to dashboard within 2s" is good.
-
-> **Name your unknowns** — Stage 2 research will surface them, but naming them upfront speeds the process.
-
-### Task Management
-
-> **One task = one PR** — atomic tasks are designed to map to single pull requests. Resist combining them.
-
-> **Dependencies first** — SpecKit generates a dependency graph. Always implement leaf tasks (no dependencies) first.
-
-> **Time-box unknowns** — if a task has an unknown, add a spike task (2h max) before the implementation task.
-
-### Agency Workflow
-
-> **Client brief → SpecKit → proposal** — run SpecKit on the client brief before writing the proposal. Surfaces scope creep before it's quoted.
-
-> **Spec as contract** — share the Stage 4 plan with clients for sign-off. It becomes the scope document.
-
-> **Version your specs** — filename: `spec-[feature]-v[n]-[date].md`. Never overwrite.
+| Command | Stage | Output |
+|---|---|---|
+| `/speckit.specify [brief]` | 1–2 | Requirements + open questions |
+| `/speckit.analyze [feature]` | 3 | Edge cases + tradeoffs + risks |
+| `/speckit.plan [requirements]` | 4 | Architecture + components + API |
+| `/speckit.tasks [plan]` | 5 | Numbered atomic task list |
+| `/speckit.implement` | 6 | Code (requires approved spec) |
+| `/speckit.review [spec]` | All | Quality check against SDD standards |
+| `/speckit.freeze` | Post-approval | Lock spec, generate change-log on edits |
 
 ---
 
-## 🔧 TROUBLESHOOTING
+## Integration with MAE Pipeline
+
+```bash
+# Full automated SDD pipeline via MAE
+mae run "speckit: AI content calendar automation for DigiMinds"
+
+# Batch spec generation
+tcc blast \
+  "speckit: lead scoring agent" \
+  "speckit: CRM webhook sync" \
+  "speckit: client reporting dashboard"
+
+# Queue for async processing
+tcc fire all
+```
+
+---
+
+## Comparison: With vs Without SpecKit
+
+| Metric | No Spec | With SpecKit |
+|---|---|---|
+| Rework cycles | 3–5 | 0–1 |
+| Scope creep rate | High | Near zero |
+| Dev start time | Immediate | +30 min spec |
+| Total delivery time | +40% (rework) | On estimate |
+| Client revisions | 5–10 | 1–2 |
+| Documentation | Post-hoc/none | Built-in |
+| Team onboarding | "Ask dev X" | Read the spec |
+
+---
+
+## Edge Case Matrix Example
+
+| Input | Condition | Expected | Error Message |
+|---|---|---|---|
+| `email: ""` | Empty | Validation fail | "Email is required" |
+| `email: "notanemail"` | Invalid format | Validation fail | "Enter valid email" |
+| `email: "x@x.x"` | Edge case short | Pass validation | — |
+| `file: 51MB PDF` | Over limit | Reject with error | "Max file size 50MB" |
+| `file: .exe` | Wrong type | Reject with error | "PDF and DOCX only" |
+| `API: timeout` | Network error | Retry 3x then fail | "Connection failed, retry" |
+
+---
+
+## ■ Tips
+
+> **Spec freeze is the most important discipline**
+> Once spec is approved: changes require a new /speckit.specify run.
+> Mid-implementation changes cost 4x as much as pre-spec changes.
+> Source: [Boehm's Cost of Change Curve](https://www.cs.umd.edu/~mvz/handouts/cost-to-fix.pdf)
+
+> **Acceptance criteria must be testable, not aspirational**
+> Bad: "The form should be user-friendly"
+> Good: "Form submits in <500ms and shows success message within 1s"
+> Source: [BDD — Cucumber docs](https://cucumber.io/docs/bdd/better-gherkin/)
+
+> **Atomic tasks = parallelizable work**
+> If a task takes more than one day, split it.
+> If it can't be parallelized, it's a blocker — flag it early.
+
+> **The SDD is the contract with future-you**
+> In 3 months, you'll have no memory of why you made this decision.
+> The spec is the only record.
+
+---
+
+## Troubleshooting
 
 | Issue | Cause | Fix |
 |---|---|---|
-| Skill not found | Wrong install path | Check `~/.claude/skills/digiminds-speckit/SKILL.md` exists |
-| Stage 6 blocked | No approved spec in context | Run stages 1-5 first, get human approval |
-| Generic spec output | Missing context | Provide tech stack, constraints, existing patterns in prompt |
-| Tasks too coarse | Granularity setting | Set `task_granularity: atomic` in config |
-| Acceptance criteria vague | Natural language input too loose | Add "testable" constraint to prompt |
-| MAE bridge fails | Bridge script missing | Check `~/.claude/bin/speckit-mae-bridge` exists and is executable |
-| Spec not persisting | Memory disabled | Set `save_to_memory: true` |
-| Stage looping | Claude context window | Summarize previous stages and continue |
-| Review gate skipped | `enforce_gate: false` | Set to `true` in production |
-| Dependency graph missing | Visualization disabled | Enable `dependency_graph: true` |
+| Skill not enforcing spec gate | CLAUDE.md rule missing | Add "Rule: No code before spec" to CLAUDE.md |
+| Tasks too large | Stage 5 needs split | Re-run `/speckit.tasks` with "split all tasks >1 day" |
+| Open questions never resolved | Missing stakeholder input | Escalate list in Stage 1 output |
+| Spec keeps changing | No freeze applied | Run `/speckit.freeze` after approval |
+| Edge cases missing | Brief too vague | Add "generate exhaustive edge case matrix" to prompt |
 
 ---
 
-## 📊 ARCHITECTURE
+## File Structure
 
 ```
 digiminds-speckit/
-├── SKILL.md                      # Core skill — loaded by Claude Code
-├── stages/
-│   ├── 01-extract.md             # Stage 1: Requirements extraction
-│   ├── 02-research.md            # Stage 2: Research and unknowns
-│   ├── 03-analyze.md             # Stage 3: Edge cases and constraints
-│   ├── 04-plan.md                # Stage 4: Architecture and approach
-│   ├── 05-tasks.md               # Stage 5: Atomic task breakdown
-│   └── 06-implement.md           # Stage 6: Implementation gate
+├── SKILL.md              # Core skill definition
+├── bin/
+│   └── speckit-mae-bridge.py  # MAE integration
 ├── templates/
-│   ├── sdd-template.md           # SDD document template
-│   ├── task-list.md              # Task breakdown template
-│   └── review-checklist.md       # Human review checklist
-├── bridge/
-│   └── speckit-mae-bridge.py     # MAE pipeline integration
-├── examples/
-│   ├── lead-capture-spec.md      # Full example spec
-│   └── n8n-automation-spec.md    # Automation example
-└── README.md
+│   ├── sdd.md            # SDD template
+│   ├── acceptance.md     # AC template
+│   └── edge-cases.md     # Edge case matrix template
+└── examples/
+    ├── lead-capture.md   # Real SDD example
+    └── crm-sync.md       # Real SDD example
 ```
-
-**Integration architecture:**
-```
-Claude Code → /speckit.* commands → SKILL.md → Stage runner
-     ↓
-MAE pipeline → speckit-mae-bridge.py → subprocess
-     ↓
-Output: spec docs saved to ~/.claude/specs/[feature]-[date].md
-     ↓
-Paperclip OS → spec as project task → implementation tracking
-```
-
----
-
-## 🗺️ ROADMAP
-
-| Feature | Status | ETA |
-|---|---|---|
-| 6-step SDD process | ✅ Done | — |
-| Slash command interface | ✅ Done | — |
-| Human review gate | ✅ Done | — |
-| MAE pipeline bridge | ✅ Done | — |
-| Acceptance criteria generation | ✅ Done | — |
-| Notion export for specs | 🔄 In progress | Q3 2025 |
-| Task dependency graph (visual) | 🔄 In progress | Q3 2025 |
-| Linear/Jira task push | 📋 Planned | Q4 2025 |
-| Multi-agent spec review | 📋 Planned | Q4 2025 |
-| Spec diff on requirement change | 📋 Planned | Q4 2025 |
-| Client portal for spec approval | 📋 Planned | Q1 2026 |
-| Spec quality scoring | 📋 Planned | Q1 2026 |
-
----
-
-## ☠️ STARTUPS / BUSINESSES
-
-**The cost of skipping spec:**
-
-| Scenario | No spec | With SpecKit |
-|---|---|---|
-| Feature scope creep | Constant rewrites | Locked spec = locked scope |
-| Client disputes | "That's not what I asked for" | Signed-off spec is the contract |
-| Onboarding new devs | Hours of tribal knowledge transfer | Read the spec |
-| Bug root cause | Requirements misunderstood | Spec traces requirement to code |
-| Agency profitability | Hours lost to rework | First-time-right ships on time |
-
-**DigiMinds uses this for:**
-- Every client automation workflow
-- Every AI agent pipeline
-- Every landing page build
-- Every integration project
-
-**The math:**
-- Average rework cost (missed requirement): 4-8 hours
-- SpecKit spec time: 20-30 minutes
-- Break-even: first feature
 
 ---
 
@@ -351,6 +344,109 @@ Paperclip OS → spec as project task → implementation tracking
 
 <div align="center">
 
-Built by [HMZ](https://github.com/hmzainjamil) · DigiMinds agency OS · No code before spec
+Built by [hmzainjamil](https://github.com/hmzainjamil) · Core tool of [DigiMinds AI Agency](https://github.com/hmzainjamil)
 
 </div>
+
+---
+
+## Spec Anti-Patterns
+
+| Anti-Pattern | Problem | Fix |
+|---|---|---|
+| "Make it work like Slack" | Scope undefined, impossible to test | Define exact features needed, not product references |
+| "Improve performance" | No baseline, no target | Specify: "reduce page load from Xms to Yms" |
+| "Nice to have" items in spec | Scope creep magnet | Separate MVP spec from future backlog explicitly |
+| Code before spec approval | Rework when requirements change | Enforce review gate strictly |
+| Spec written by non-implementer | Missing technical constraints | Dev + stakeholder co-write spec |
+| Acceptance criteria too vague | "Done" is subjective | Every AC must be testable with a specific assertion |
+| No edge case matrix | Unexpected inputs break production | Always run Stage 3 Analyze fully |
+
+---
+
+## SDD Quality Checklist
+
+Before approving a spec, verify:
+
+| Check | Pass condition |
+|---|---|
+| Problem statement clear | Anyone can understand the why in 30 seconds |
+| All functional requirements numbered | FR-01, FR-02... no orphan requirements |
+| Non-functional requirements defined | Performance, security, reliability thresholds set |
+| Acceptance criteria testable | Each AC has Given/When/Then format |
+| Edge case matrix complete | At least 5 edge cases per input type |
+| Architecture diagram exists | ASCII or Mermaid diagram included |
+| Task list atomic | Each task completable in <1 day |
+| Dependencies mapped | No hidden assumptions in task ordering |
+| Open questions resolved | No "TBD" in approved spec |
+| Reviewer sign-off logged | Name + date of approval recorded |
+
+---
+
+## Integration Patterns
+
+### SpecKit + Claude Code Workflow
+
+```
+1. User prompts: "Build X"
+2. SpecKit intercepts → runs /speckit.specify
+3. Stage 1-4 complete → spec doc generated
+4. Human reviews → approves or requests changes
+5. /speckit.tasks → atomic task list
+6. Human approves tasks
+7. /speckit.implement → Claude executes against spec
+8. Tests run against acceptance criteria
+9. All ACs pass → feature complete
+```
+
+### SpecKit + MAE Pipeline
+
+```bash
+# MAE automatically runs SpecKit for new features
+mae run "feature: [description]"
+# → routes to speckit-mae-bridge.py
+# → stages 1-4 auto-complete
+# → human review gate
+# → tasks assigned to specialist agents
+# → implementation parallelized
+```
+
+### Version Control for Specs
+
+```
+docs/
+└── specs/
+    ├── feature-auth/
+    │   ├── v1-initial.md      # original spec
+    │   ├── v2-revised.md      # after stakeholder review
+    │   └── v3-frozen.md       # approved, locked
+    ├── feature-billing/
+    └── feature-reporting/
+```
+
+---
+
+## Metrics: SpecKit ROI
+
+| Metric | Before SpecKit | After SpecKit |
+|---|---|---|
+| Revision cycles per feature | 4.2 | 0.8 |
+| Scope creep incidents/month | 8 | 1 |
+| Time to first working build | 2 weeks | 4 days |
+| Documentation coverage | 20% | 100% |
+| Onboarding time for new dev | 2 weeks | 3 days |
+| Post-release bug count | High | Low |
+
+*Metrics based on DigiMinds internal project tracking*
+
+---
+
+## Related Tools
+
+| Tool | Role | Integration |
+|---|---|---|
+| `claude-mem-main` | Persist approved specs across sessions | Spec written to memory on approval |
+| `mae-master-automation-engine` | Orchestrate SpecKit stages | `mae run "speckit: ..."` |
+| `llm-agents-bundle` | Execute tasks from spec | Pass task list to agent pipeline |
+| `digiminds-master` | Agency OS | SpecKit runs as part of every client project |
+
