@@ -2,6 +2,6 @@
 
 Date: 2026-10-02
 
-The previous README claimed an executable six-stage spec workflow, Claude commands, package installation and configuration, tests, benchmarks, case studies, and specific paths. The checked paths `docs/README.md`, `docs/assets/banner.png`, `.claude/commands/speckit.specify.md`, `.claude/commands/speckit.plan.md`, `templates/spec-template.md`, `memory/constitution.md`, root `package.json`, and `SECURITY.md` returned not found. Search for `speckit.specify` returned no results; the repository index was unavailable.
+The previous review checked several expected paths only at the repository root and described the checkout as documentation-only. The recursive tree on `docs/spec-kit-scope-and-verification` shows a nested workspace at `digiminds/`: Claude Code skill files, Spec Kit templates, a constitution template and memory file, workflow YAML, integration metadata, and a Git extension with commands and scripts. It also confirms a root `SECURITY.md`.
 
-This is not a full tree audit. The README now states that limit. Restore commands or workflow claims only after checking the full tree and demonstrating the process from actual files. No commands or tests were run.
+The root README was corrected to link these actual paths and distinguish presence from host/runtime verification. Root-level `package.json` and `docs/README.md` are absent. No tests or workflows were run; current upstream parity was not checked. The extension declares optional commit operations, which users should review before enabling.
