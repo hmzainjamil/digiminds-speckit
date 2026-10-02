@@ -20,3 +20,5 @@ The repository search index was unavailable, so the full recursive tree was not 
 A usable spec-driven guide should document each stage, inputs and outputs, decision gates, artifact paths, supported host/version, failure recovery, and a worked example. Add commands only after verifying their implementation. Distinguish human process guidance from executable automation.
 
 See [CONTENT_REVIEW.md](CONTENT_REVIEW.md) for paths checked and removed claims.
+
+See [SECURITY.md](SECURITY.md) for requirements and command review guidance.
