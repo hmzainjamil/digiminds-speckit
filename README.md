@@ -1,24 +1,21 @@
 # DigiMinds Spec Kit
 
-This repository is presented as a spec-driven development guide. The previous README described a six-step workflow, Claude commands, install/configuration steps, APIs, benchmarks, case studies, tests, and templates. The command, template, banner, and documentation paths checked during this review were not found, and repository code search returned no results. The README no longer presents these claims as verified.
+A Spec Kit workspace snapshot under `digiminds/`. The checked tree contains Claude Code skill instructions, Spec Kit workflow files, templates, integration metadata, and an optional Git extension. File presence does not prove that the host discovers or runs these workflows.
 
-## Current verification
+## Repository map
 
-| Item | Result |
+| Area | Verified paths |
 |---|---|
-| Root README | Present |
-| Claimed banner and docs index | Not found at checked paths |
-| Claimed Claude command files | Not found at checked paths |
-| Claimed spec template and constitution | Not found at checked paths |
-| Package manifest and security policy | Not found at checked paths |
-| Tests and benchmarks | Not verified |
+| Claude Code instructions | `digiminds/.claude/skills/` |
+| Spec Kit workflow and registry | `digiminds/.specify/workflows/` |
+| Templates and project constitution | `digiminds/.specify/templates/` and `digiminds/.specify/memory/constitution.md` |
+| Optional Git extension | [Extension guide](digiminds/.specify/extensions/git/README.md), manifest, commands, and shell scripts |
+| Root context and security | [CLAUDE.md](digiminds/CLAUDE.md) and [SECURITY.md](SECURITY.md) |
 
-The repository search index was unavailable, so the full recursive tree was not independently enumerated. Treat this repository as documentation-only until the actual workflow files and supported environment are verified.
+The extension manifest names the [GitHub Spec Kit repository](https://github.com/github/spec-kit) as its repository. Whether this checkout matches upstream or works with a particular host version was not verified.
 
-## Intended workflow documentation
+## Status and limits
 
-A usable spec-driven guide should document each stage, inputs and outputs, decision gates, artifact paths, supported host/version, failure recovery, and a worked example. Add commands only after verifying their implementation. Distinguish human process guidance from executable automation.
+The recursive tree on `docs/spec-kit-scope-and-verification` was checked on 2026-10-02. The root has no package manifest or documented root install command. No tests or workflow execution were verified. Review the extension configuration and scripts before enabling hooks: its declared workflow includes optional Git commit operations.
 
-See [CONTENT_REVIEW.md](CONTENT_REVIEW.md) for paths checked and removed claims.
-
-See [SECURITY.md](SECURITY.md) for requirements and command review guidance.
+See [CONTENT_REVIEW.md](CONTENT_REVIEW.md) for the path corrections and review scope. See [SECURITY.md](SECURITY.md) before using the command or extension examples.
